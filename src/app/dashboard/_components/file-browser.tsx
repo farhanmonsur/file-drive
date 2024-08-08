@@ -74,13 +74,12 @@ export function FileBrowser({
   );
   const isLoading = files === undefined;
 
-  const modifiedFiles: FileColumn[] =
+  const modifiedFiles =
     files?.map((file) => ({
       ...file,
       isFavorited: (favorites ?? []).some(
         (favorite) => favorite.fileId === file._id
       ),
-      url: null, // Assign a real URL if applicable
     })) ?? [];
 
   return (
@@ -96,13 +95,13 @@ export function FileBrowser({
       <Tabs defaultValue="grid">
         <div className="flex justify-between items-center">
           <TabsList className="mb-2">
-            <TabsTrigger value="grid" className="flex gap-2 items-center">
+            {/* <TabsTrigger value="grid" className="flex gap-2 items-center">
               <GridIcon />
               Grid
-            </TabsTrigger>
-            <TabsTrigger value="table" className="flex gap-2 items-center">
+            </TabsTrigger> */}
+            {/* <TabsTrigger value="table" className="flex gap-2 items-center">
               <RowsIcon /> Table
-            </TabsTrigger>
+            </TabsTrigger> */}
           </TabsList>
 
           <div className="flex gap-2 items-center">
@@ -140,9 +139,9 @@ export function FileBrowser({
             })}
           </div>
         </TabsContent>
-        <TabsContent value="table">
+        {/* <TabsContent value="table">
           <DataTable columns={columns} data={modifiedFiles} />
-        </TabsContent>
+        </TabsContent> */}
       </Tabs>
 
       {files?.length === 0 && <Placeholder />}
