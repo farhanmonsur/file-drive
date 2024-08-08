@@ -74,12 +74,13 @@ export function FileBrowser({
   );
   const isLoading = files === undefined;
 
-  const modifiedFiles =
+  const modifiedFiles: FileColumn[] =
     files?.map((file) => ({
       ...file,
       isFavorited: (favorites ?? []).some(
         (favorite) => favorite.fileId === file._id
       ),
+      url: null, // Assign a real URL if applicable
     })) ?? [];
 
   return (
